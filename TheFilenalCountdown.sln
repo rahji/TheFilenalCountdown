@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1209
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheFilenalCountdown", "TheFilenalCountdown\TheFilenalCountdown.csproj", "{B6C56E44-3FCA-4868-B66B-94711259A775}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6C56E44-3FCA-4868-B66B-94711259A775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C56E44-3FCA-4868-B66B-94711259A775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C56E44-3FCA-4868-B66B-94711259A775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C56E44-3FCA-4868-B66B-94711259A775}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DDBA266-2848-45B9-A73B-ECB08847CB9D}
+	EndGlobalSection
+EndGlobal
