@@ -4,7 +4,7 @@ The Filenal Countdown (punny spelling intended) is a countdown timer that works 
 
 ## Installation
 
-Download either the setup.exe or Setup1.msi file and run it.
+Download either the [setup.exe](setup.exe) or [Setup1.msi](Setup1.msi) installer file and run it.
 
 This only runs on Windows, sorry. If you're using linux or a Mac, you can see this tip I made for accomplishing the same thing using a shell script I wrote: https://youtu.be/vB0jObYSoMI
 
