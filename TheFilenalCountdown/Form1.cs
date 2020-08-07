@@ -168,6 +168,10 @@ namespace TheFilenalCountdown
                 Properties.Settings.Default.capsIndex = cbx_capitalization.SelectedIndex;
                 Properties.Settings.Default.commasText = cbx_replaceCommasWith.Text;
                 Properties.Settings.Default.Save();
+
+                Application.ExitThread();
+                Environment.Exit(0);
+                
             }
         }
 

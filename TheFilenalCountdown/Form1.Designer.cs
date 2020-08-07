@@ -275,9 +275,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(916, 619);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(285, 37);
+            this.label6.Size = new System.Drawing.Size(260, 37);
             this.label6.TabIndex = 12;
-            this.label6.Text = "git.io/JJPOS v1.1.4";
+            this.label6.Text = "git.io/JJPOS v1.2";
             // 
             // Form1
             // 

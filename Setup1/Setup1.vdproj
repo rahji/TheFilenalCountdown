@@ -34,13 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_828A202FDE1369BBD937275D862A0BF2"
+        "OwnerKey" = "8:_1029E709C2E048D18E61D120D8B07FDC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1029E709C2E048D18E61D120D8B07FDC"
+        "OwnerKey" = "8:_828A202FDE1369BBD937275D862A0BF2"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -245,15 +245,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:The Filenal Countdown"
-        "ProductCode" = "8:{5CCD427A-6381-4557-BB53-0208CBEBCAA7}"
-        "PackageCode" = "8:{4A6660FE-5207-4942-81CB-77AD9EE0A6D0}"
+        "ProductCode" = "8:{A89360AF-FD0F-4DDA-A8D3-BAD30DB85A8D}"
+        "PackageCode" = "8:{42BDB0F5-2C12-4B96-97D8-D5D4B0F36AC9}"
         "UpgradeCode" = "8:{ED684911-0A83-423C-A842-ACE79BAD9039}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.4"
+        "ProductVersion" = "8:1.2"
         "Manufacturer" = "8:rahjicom"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
