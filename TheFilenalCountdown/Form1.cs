@@ -22,13 +22,17 @@ namespace TheFilenalCountdown
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
         static int secondsCounted = 0;
         static bool exitFlag = false;
+        static bool countUp = false;
 
         // This is the method to run when the timer is raised, every second
         private static void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
             secondsCounted++;
 
-            timeSpan = TimeSpan.FromSeconds(totalSeconds - secondsCounted);
+            timeSpan = TimeSpan.FromSeconds(
+                (countUp) ? secondsCounted : totalSeconds - secondsCounted);
+
+            Console.WriteLine((countUp) ? "CountUp" : "CountDown");
 
             System.IO.File.WriteAllText(outputFilename, String.Format(selectedFormatString, timeSpan));
             //Console.WriteLine(selectedFormatString, timeSpan);
@@ -67,6 +71,7 @@ namespace TheFilenalCountdown
             num_minutes.Value = Properties.Settings.Default.mins;
             num_seconds.Value = Properties.Settings.Default.secs;
             outputFilename = Properties.Settings.Default.filename;
+            lbl_filename.Text = outputFilename;
             cbx_format.SelectedIndex = Properties.Settings.Default.formatIndex;
             cbx_capitalization.SelectedIndex = Properties.Settings.Default.capsIndex;
             cbx_replaceCommasWith.Text = Properties.Settings.Default.commasText;
@@ -89,6 +94,7 @@ namespace TheFilenalCountdown
 
         private void start_Click(object sender, EventArgs e)
         {
+            countUp = chk_countUp.Checked; 
             selectedFormatString = (String)cbx_format.SelectedValue;
 
             if (lbl_filename.Text == "None")
@@ -143,7 +149,7 @@ namespace TheFilenalCountdown
         {
             // Display a MsgBox asking the user to save changes or abort.
             if (myTimer.Enabled == true &&
-                MessageBox.Show("Do you want to abandon the countdown?", "Quit?",
+                MessageBox.Show("Do you want to cancel the counting?", "Quit?",
                     MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 // Cancel the Closing event from closing the form.
@@ -164,7 +170,7 @@ namespace TheFilenalCountdown
                 Properties.Settings.Default.Save();
             }
         }
-        
+
     }
 
 

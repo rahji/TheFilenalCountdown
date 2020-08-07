@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.grp_time = new System.Windows.Forms.GroupBox();
             this.num_seconds = new System.Windows.Forms.NumericUpDown();
             this.num_minutes = new System.Windows.Forms.NumericUpDown();
@@ -45,7 +46,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbx_capitalization = new System.Windows.Forms.ComboBox();
             this.cbx_format = new System.Windows.Forms.ComboBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.chk_countUp = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.grp_time.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_seconds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_minutes)).BeginInit();
@@ -146,7 +148,7 @@
             // 
             // btn_start
             // 
-            this.btn_start.Location = new System.Drawing.Point(972, 618);
+            this.btn_start.Location = new System.Drawing.Point(393, 605);
             this.btn_start.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(238, 65);
@@ -187,7 +189,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.groupBox1.Size = new System.Drawing.Size(706, 410);
+            this.groupBox1.Size = new System.Drawing.Size(707, 410);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Format";
@@ -215,7 +217,7 @@
             this.cbx_replaceCommasWith.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.cbx_replaceCommasWith.Name = "cbx_replaceCommasWith";
             this.cbx_replaceCommasWith.Size = new System.Drawing.Size(194, 45);
-            this.cbx_replaceCommasWith.TabIndex = 8;
+            this.cbx_replaceCommasWith.TabIndex = 7;
             // 
             // label1
             // 
@@ -258,29 +260,39 @@
             this.cbx_format.Size = new System.Drawing.Size(577, 45);
             this.cbx_format.TabIndex = 5;
             // 
-            // linkLabel1
+            // chk_countUp
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(51, 632);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(663, 37);
-            this.linkLabel1.TabIndex = 12;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://github.com/rahji/TheFilenalCountdown";
+            this.chk_countUp.AutoSize = true;
+            this.chk_countUp.Location = new System.Drawing.Point(38, 618);
+            this.chk_countUp.Name = "chk_countUp";
+            this.chk_countUp.Size = new System.Drawing.Size(312, 41);
+            this.chk_countUp.TabIndex = 8;
+            this.chk_countUp.Text = "Count Up Instead";
+            this.chk_countUp.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(916, 619);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(285, 37);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "git.io/JJPOS v1.1.4";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 714);
-            this.Controls.Add(this.linkLabel1);
+            this.ClientSize = new System.Drawing.Size(1347, 714);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.chk_countUp);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbl_filename);
             this.Controls.Add(this.btn_chooseFile);
             this.Controls.Add(this.btn_start);
             this.Controls.Add(this.grp_time);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Name = "Form1";
             this.Text = "The Filenal Countdown";
@@ -316,7 +328,8 @@
         private System.Windows.Forms.ComboBox cbx_capitalization;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbx_replaceCommasWith;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox chk_countUp;
+        private System.Windows.Forms.Label label6;
     }
 }
 
