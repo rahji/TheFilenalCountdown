@@ -22,8 +22,6 @@ That's it. You should see "00:00:00" in your OBS window. If you start the countd
 
 I have not tried this with any other software, but I imagine it will be similar with other streaming software. I'm sure people will find other interesting uses for this as well.
 
-![Screenshot](/screenshots/screenshot.png)
-
 ## Caveats
 
 As of two days ago, I had never attempted to write a Windows program. But I have been programming for about 35 years, and this is a simple program so it worked out just as I'd hope. I think it's working great, but if you find a problem create an issue in GitHub. 
