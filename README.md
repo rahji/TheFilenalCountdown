@@ -1,6 +1,6 @@
 # The Filenal Countdown
 
-The Filenal Countdown (punny spelling intended) is a countdown timer that works well with OBS and other streaming software. It starts a countdown, based on your settings, and saves it to a text file once per second. 
+The Filenal Countdown (punny spelling intended) is a countdown timer that works well with OBS and other streaming software. It starts a countdown, based on your settings, and saves it to a text file once per second. **(By the way, it can also count up now.)**
 
 ![Animated Example](/screenshots/animation.gif)
 
