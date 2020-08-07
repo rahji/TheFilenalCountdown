@@ -2,6 +2,8 @@
 
 The Filenal Countdown (punny spelling intended) is a countdown timer that works well with OBS and other streaming software. It starts a countdown, based on your settings, and saves it to a text file once per second. 
 
+![Animated Example](/screenshots/animation.gif)
+
 ## Installation
 
 Download either the setup.exe or Setup1.msi installer file from the list of Releases in GitHub.
@@ -19,6 +21,8 @@ An example of how you might use this with OBS Studio:
 That's it. You should see "00:00:00" in your OBS window. If you start the countdown again in The Filenal Countdown, you should see the countdown changing in OBS.
 
 I have not tried this with any other software, but I imagine it will be similar with other streaming software. I'm sure people will find other interesting uses for this as well.
+
+![Screenshot](/screenshots/screenshot.png)
 
 ## Caveats
 
