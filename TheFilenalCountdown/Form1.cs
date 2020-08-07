@@ -32,8 +32,6 @@ namespace TheFilenalCountdown
             timeSpan = TimeSpan.FromSeconds(
                 (countUp) ? secondsCounted : totalSeconds - secondsCounted);
 
-            Console.WriteLine((countUp) ? "CountUp" : "CountDown");
-
             System.IO.File.WriteAllText(outputFilename, String.Format(selectedFormatString, timeSpan));
             //Console.WriteLine(selectedFormatString, timeSpan);
 
