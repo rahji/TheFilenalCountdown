@@ -19,7 +19,8 @@ namespace TheFilenalCountdown
         static String selectedFormatString;
         static String outputFilename;
 
-        static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
+        // not using System.Windows.Forms.Timer because it has bad precision
+        static System.Timers.Timer myTimer = new System.Timers.Timer();
         static int secondsCounted = 0;
         static bool exitFlag = false;
         static bool countUp = false;
@@ -43,7 +44,7 @@ namespace TheFilenalCountdown
         {
             InitializeComponent();
 
-            myTimer.Tick += new EventHandler(TimerEventProcessor);
+            myTimer.Elapsed += new System.Timers.ElapsedEventHandler(TimerEventProcessor);
             myTimer.Interval = 1000;
             
             ArrayList timeFormats = new ArrayList();
