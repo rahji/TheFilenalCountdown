@@ -14,15 +14,15 @@ namespace TheFilenalCountdown
 {
     public partial class Form1 : Form
     {
-        static int totalSeconds;
-        static TimeSpan timeSpan;
-        static String selectedFormatString;
-        static String outputFilename;
+        int totalSeconds;
+        TimeSpan timeSpan;
+        String selectedFormatString;
+        String outputFilename;
 
         // not using System.Windows.Forms.Timer because it has bad precision
-        static System.Timers.Timer myTimer = new System.Timers.Timer();
-        static int secondsCounted = 0;
-        static bool countUp = false;
+        System.Timers.Timer myTimer = new System.Timers.Timer();
+        int secondsCounted = 0;
+        bool countUp = false;
 
         // This is the method to run when the timer is raised, every second
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
@@ -151,9 +151,6 @@ namespace TheFilenalCountdown
             }
             else
             {
-                myTimer.Stop();
-                myTimer.Dispose();
-
                 Properties.Settings.Default.hrs = num_hours.Value;
                 Properties.Settings.Default.mins = num_minutes.Value;
                 Properties.Settings.Default.secs = num_seconds.Value;
@@ -162,13 +159,8 @@ namespace TheFilenalCountdown
                 Properties.Settings.Default.capsIndex = cbx_capitalization.SelectedIndex;
                 Properties.Settings.Default.commasText = cbx_replaceCommasWith.Text;
                 Properties.Settings.Default.Save();
-
-                Application.ExitThread();
-                Environment.Exit(0);
-                
             }
         }
-
     }
 
 
