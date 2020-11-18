@@ -129,6 +129,9 @@ namespace TheFilenalCountdown
 
                 while (exitFlag == false)
                 {
+                    // Yield CPU time to other processes
+                    Thread.Sleep(10);
+
                     // Processes all the events in the queue.
                     Application.DoEvents();
                 }
