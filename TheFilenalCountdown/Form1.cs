@@ -37,11 +37,7 @@ namespace TheFilenalCountdown
 
             if (secondsCounted == totalSeconds)
             {
-                myTimer.Stop();
-                secondsCounted = 0;
-
-                btn_start.Text = "Start";
-                btn_start.Enabled = true;
+                stopTimer();
             }
         }
 
@@ -102,7 +98,18 @@ namespace TheFilenalCountdown
 
         private void start_Click(object sender, EventArgs e)
         {
-            countUp = chk_countUp.Checked; 
+            if (! myTimer.Enabled)
+            {
+                startTimer();
+            } else
+            {
+                stopTimer();
+            }
+        }
+
+        private void startTimer()
+        {
+            countUp = chk_countUp.Checked;
             selectedFormatString = (String)cbx_format.SelectedValue;
 
             if (lbl_filename.Text == "None")
@@ -122,7 +129,7 @@ namespace TheFilenalCountdown
 
                 // this is a little clumsy, but I'm okay with it (trying not to wreck the hh, mm, etc)
                 if (cbx_capitalization.SelectedIndex == 1) // ALL CAPS
-                    if (selectedFormatString.Contains("hours")) 
+                    if (selectedFormatString.Contains("hours"))
                         selectedFormatString = selectedFormatString.Replace(" hours", " HOURS").Replace(" minutes", " MINUTES").Replace(" seconds", " SECONDS");
                     else
                         selectedFormatString = selectedFormatString.Replace(" hrs", " HRS").Replace(" mins", " MINS").Replace(" secs", " SECS");
@@ -132,11 +139,18 @@ namespace TheFilenalCountdown
                 if (cbx_replaceCommasWith.Text != "")
                     selectedFormatString = selectedFormatString.Replace(",", cbx_replaceCommasWith.Text);
 
-                btn_start.Enabled = false;
-                btn_start.Text = "Counting";
+                btn_start.Text = "Stop";
 
                 myTimer.Start();
             }
+        }
+
+        private void stopTimer()
+        {
+            myTimer.Stop();
+
+            secondsCounted = 0;
+            btn_start.Text = "Start";
         }
 
         private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
