@@ -79,6 +79,8 @@ namespace TheFilenalCountdown
             cbx_format.SelectedIndex = Properties.Settings.Default.formatIndex;
             cbx_capitalization.SelectedIndex = Properties.Settings.Default.capsIndex;
             cbx_replaceCommasWith.Text = Properties.Settings.Default.commasText;
+
+            btn_stop.Enabled = false;
         }
 
         private void chooseFile_Click(object sender, EventArgs e)
@@ -98,13 +100,12 @@ namespace TheFilenalCountdown
 
         private void start_Click(object sender, EventArgs e)
         {
-            if (! myTimer.Enabled)
-            {
-                startTimer();
-            } else
-            {
-                stopTimer();
-            }
+            startTimer();
+        }
+
+        private void btn_stop_Click(object sender, EventArgs e)
+        {
+            stopTimer();
         }
 
         private void startTimer()
@@ -139,7 +140,8 @@ namespace TheFilenalCountdown
                 if (cbx_replaceCommasWith.Text != "")
                     selectedFormatString = selectedFormatString.Replace(",", cbx_replaceCommasWith.Text);
 
-                btn_start.Text = "Stop";
+                btn_start.Enabled = false;
+                btn_stop.Enabled = true;
 
                 myTimer.Start();
             }
@@ -150,7 +152,8 @@ namespace TheFilenalCountdown
             myTimer.Stop();
 
             secondsCounted = 0;
-            btn_start.Text = "Start";
+            btn_start.Enabled = true;
+            btn_stop.Enabled = false;
         }
 
         private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
