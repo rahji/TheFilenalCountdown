@@ -277,7 +277,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(260, 37);
             this.label6.TabIndex = 12;
-            this.label6.Text = "git.io/JJPOS v1.2";
+            this.label6.Text = "git.io/JJPOS v1.3";
             // 
             // Form1
             // 
