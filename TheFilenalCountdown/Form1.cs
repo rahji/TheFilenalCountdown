@@ -22,11 +22,10 @@ namespace TheFilenalCountdown
         // not using System.Windows.Forms.Timer because it has bad precision
         static System.Timers.Timer myTimer = new System.Timers.Timer();
         static int secondsCounted = 0;
-        static bool exitFlag = false;
         static bool countUp = false;
 
         // This is the method to run when the timer is raised, every second
-        private static void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
             secondsCounted++;
 
@@ -36,8 +35,14 @@ namespace TheFilenalCountdown
             System.IO.File.WriteAllText(outputFilename, String.Format(selectedFormatString, timeSpan));
             //Console.WriteLine(selectedFormatString, timeSpan);
 
-            if (secondsCounted == totalSeconds) // Stop the timer.
-                exitFlag = true;
+            if (secondsCounted == totalSeconds)
+            {
+                myTimer.Stop();
+                secondsCounted = 0;
+
+                btn_start.Text = "Start";
+                btn_start.Enabled = true;
+            }
         }
 
         public Form1()
@@ -46,6 +51,10 @@ namespace TheFilenalCountdown
 
             myTimer.Elapsed += new System.Timers.ElapsedEventHandler(TimerEventProcessor);
             myTimer.Interval = 1000;
+
+            // makes the timer ElipsedEventHandler be invoked on the same thread as this form, which
+            // means we can safely access all form controls from inside
+            myTimer.SynchronizingObject = this;
             
             ArrayList timeFormats = new ArrayList();
             timeFormats.Add(new timeFormatSelection("hh:mm:ss", "{0:hh\\:mm\\:ss}"));
@@ -127,23 +136,6 @@ namespace TheFilenalCountdown
                 btn_start.Text = "Counting";
 
                 myTimer.Start();
-
-                while (exitFlag == false)
-                {
-                    // Yield CPU time to other processes
-                    Thread.Sleep(10);
-
-                    // Processes all the events in the queue.
-                    Application.DoEvents();
-                }
-
-                // the series of 1 second events is done, given the time that the user specified
-                myTimer.Stop();
-                exitFlag = false;
-                secondsCounted = 0;
-
-                btn_start.Text = "Start";
-                btn_start.Enabled = true;
             }
         }
 
