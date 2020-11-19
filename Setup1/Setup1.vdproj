@@ -145,11 +145,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_828A202FDE1369BBD937275D862A0BF2"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -245,18 +240,18 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:The Filenal Countdown"
-        "ProductCode" = "8:{BFCEDAB4-0BB9-41CB-B89D-23845B1EE3B3}"
-        "PackageCode" = "8:{3E18E962-0152-433B-97D4-AA2D27212FD5}"
+        "ProductCode" = "8:{8F27E1BC-CC59-40C7-8F91-FACD3928BD22}"
+        "PackageCode" = "8:{4B6B183D-9905-4361-9B3B-A4AE3974C9C2}"
         "UpgradeCode" = "8:{ED684911-0A83-423C-A842-ACE79BAD9039}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.3"
+        "ProductVersion" = "8:2.0"
         "Manufacturer" = "8:rahjicom"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://git.io/JJPOS"
         "Title" = "8:The Filenal Countdown Setup"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Rob Duarte"
