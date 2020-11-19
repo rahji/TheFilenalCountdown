@@ -14,18 +14,18 @@ namespace TheFilenalCountdown
 {
     public partial class Form1 : Form
     {
-        static int totalSeconds;
-        static TimeSpan timeSpan;
-        static String selectedFormatString;
-        static String outputFilename;
+        int totalSeconds;
+        TimeSpan timeSpan;
+        String selectedFormatString;
+        String outputFilename;
 
-        static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        static int secondsCounted = 0;
-        static bool exitFlag = false;
-        static bool countUp = false;
+        // not using System.Windows.Forms.Timer because it has bad precision
+        System.Timers.Timer myTimer = new System.Timers.Timer();
+        int secondsCounted = 0;
+        bool countUp = false;
 
         // This is the method to run when the timer is raised, every second
-        private static void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
             secondsCounted++;
 
@@ -35,16 +35,22 @@ namespace TheFilenalCountdown
             System.IO.File.WriteAllText(outputFilename, String.Format(selectedFormatString, timeSpan));
             //Console.WriteLine(selectedFormatString, timeSpan);
 
-            if (secondsCounted == totalSeconds) // Stop the timer.
-                exitFlag = true;
+            if (secondsCounted == totalSeconds)
+            {
+                stopTimer();
+            }
         }
 
         public Form1()
         {
             InitializeComponent();
 
-            myTimer.Tick += new EventHandler(TimerEventProcessor);
+            myTimer.Elapsed += new System.Timers.ElapsedEventHandler(TimerEventProcessor);
             myTimer.Interval = 1000;
+
+            // makes the timer ElipsedEventHandler be invoked on the same thread as this form, which
+            // means we can safely access all form controls from inside
+            myTimer.SynchronizingObject = this;
             
             ArrayList timeFormats = new ArrayList();
             timeFormats.Add(new timeFormatSelection("hh:mm:ss", "{0:hh\\:mm\\:ss}"));
@@ -73,6 +79,8 @@ namespace TheFilenalCountdown
             cbx_format.SelectedIndex = Properties.Settings.Default.formatIndex;
             cbx_capitalization.SelectedIndex = Properties.Settings.Default.capsIndex;
             cbx_replaceCommasWith.Text = Properties.Settings.Default.commasText;
+
+            btn_stop.Enabled = false;
         }
 
         private void chooseFile_Click(object sender, EventArgs e)
@@ -92,7 +100,17 @@ namespace TheFilenalCountdown
 
         private void start_Click(object sender, EventArgs e)
         {
-            countUp = chk_countUp.Checked; 
+            startTimer();
+        }
+
+        private void btn_stop_Click(object sender, EventArgs e)
+        {
+            stopTimer();
+        }
+
+        private void startTimer()
+        {
+            countUp = chk_countUp.Checked;
             selectedFormatString = (String)cbx_format.SelectedValue;
 
             if (lbl_filename.Text == "None")
@@ -112,7 +130,7 @@ namespace TheFilenalCountdown
 
                 // this is a little clumsy, but I'm okay with it (trying not to wreck the hh, mm, etc)
                 if (cbx_capitalization.SelectedIndex == 1) // ALL CAPS
-                    if (selectedFormatString.Contains("hours")) 
+                    if (selectedFormatString.Contains("hours"))
                         selectedFormatString = selectedFormatString.Replace(" hours", " HOURS").Replace(" minutes", " MINUTES").Replace(" seconds", " SECONDS");
                     else
                         selectedFormatString = selectedFormatString.Replace(" hrs", " HRS").Replace(" mins", " MINS").Replace(" secs", " SECS");
@@ -123,27 +141,19 @@ namespace TheFilenalCountdown
                     selectedFormatString = selectedFormatString.Replace(",", cbx_replaceCommasWith.Text);
 
                 btn_start.Enabled = false;
-                btn_start.Text = "Counting";
+                btn_stop.Enabled = true;
 
                 myTimer.Start();
-
-                while (exitFlag == false)
-                {
-                    // Yield CPU time to other processes
-                    Thread.Sleep(10);
-
-                    // Processes all the events in the queue.
-                    Application.DoEvents();
-                }
-
-                // the series of 1 second events is done, given the time that the user specified
-                myTimer.Stop();
-                exitFlag = false;
-                secondsCounted = 0;
-
-                btn_start.Text = "Start";
-                btn_start.Enabled = true;
             }
+        }
+
+        private void stopTimer()
+        {
+            myTimer.Stop();
+
+            secondsCounted = 0;
+            btn_start.Enabled = true;
+            btn_stop.Enabled = false;
         }
 
         private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
@@ -158,9 +168,6 @@ namespace TheFilenalCountdown
             }
             else
             {
-                myTimer.Stop();
-                myTimer.Dispose();
-
                 Properties.Settings.Default.hrs = num_hours.Value;
                 Properties.Settings.Default.mins = num_minutes.Value;
                 Properties.Settings.Default.secs = num_seconds.Value;
@@ -169,13 +176,8 @@ namespace TheFilenalCountdown
                 Properties.Settings.Default.capsIndex = cbx_capitalization.SelectedIndex;
                 Properties.Settings.Default.commasText = cbx_replaceCommasWith.Text;
                 Properties.Settings.Default.Save();
-
-                Application.ExitThread();
-                Environment.Exit(0);
-                
             }
         }
-
     }
 
 
